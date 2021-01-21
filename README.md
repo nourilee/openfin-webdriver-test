@@ -1,97 +1,59 @@
-# Hello OpenFin Selenium Example
+# Project Title
 
-## Overview
-Included in this repository are simple example tests for the 'Hello OpenFin' app using the popular WebDriver JS Bindings, test frameworks and assertion libraries.  
-We have modified the latest Chrome driver to work with OpenFin Runtime.
+Simple overview of use/purpose.
 
-Examples for the following WebDriver JS Bindings are included in this project: 
-1. [WebDriverJs / Selenium-WebDriver](http://www.seleniumhq.org/): test/WebDriverJs/Mocha
-2. [WebDriverIO](http://webdriver.io/): test/WebDriverIO/Mocha
-3. [WD](http://admc.io/wd/): test/WD/Mocha
-4. [Protractor](http://angular.github.io/protractor/#/): test/protractor
+## Description
 
-### Guidelines
-Since all HTML5 applications in the OpenFin environment need to be started with OpenFin API, chromeDriver.get(URL) is not supported.
+An in-depth paragraph about your project and overview of use.
 
-ChromeDriver, by default, starts Chrome browser with various Chrome arguments, including remote debugging port, before running tests.  ChromeOptions.setBinary needs to be called so ChromeDriver can start OpenFin Runtime properly.  RunOpenFin.bat is an example batch file that can be set as 'binary'.
+## Getting Started
 
-Given there can be multiple applications/windows active in OpenFin Runtime, tests must begin by selecting the targeted window.  Each test script has a function that
-selects the window by matching it's title.
+### Dependencies
 
-Since the OpenFin Runtime is started by OpenFinRVM, Chromedriver does not have direct control of the OpenFin Runtime.  Chromedriver must be started before any test runs.
-Once a test is complete, it needs to shut down OpenFin Runtime by running javascript code "fin.desktop.System.exit();".  driver.quit() does not shut down OpenFin Runtime since
-it does not have access.
+* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
+* ex. Windows 10
 
-In Summary
-* Tests must target specific windows
-* OpenFin RunTime must be shut down after a test is completed
+### Installing
 
-### Prerequisites
-1. Install Node.js
-2. Download/clone this repository and `cd` into it
-3. Install all the dependencies    
- ```bash
- npm install
- ```
-4. For Windows, install [Hello OpenFin](https://install.openfin.co/download/?config=https%3A%2F%2Fcdn.openfin.co%2Fdemos%2Fhello%2Fapp.json&fileName=HelloOpenFin&supportEmail=support%40openfin.co) App
-5. For Mac, install OpenFin CLI
- ```bash
- npm install -g openfin-cli
- ```
+* How/where to download your program
+* Any modifications needed to be made to files/folders
 
-### Usage
-The following steps will help you run tests:
-1. Start chromedriver.exe.  You can specify --verbose command line argument to get more loggings.
-2. Host test/app.json in a webserver, such as localhost:8000, and update test/config.js with the correct URL.
-3. Run the test for one bindings (replace [bindings] with WD, WIO or WJS)
- ```bash
- npm run test[bindings]
- ```
+### Executing program
 
-## Instructions for Protractor
-The example code is written for the Super Calculator Angular demo app that is used in Quick Start of Protractor (http://angular.github.io/protractor/#/).
+* How to run the program
+* Step-by-step bullets
+```
+code blocks for commands
+```
 
-1. Install Node.js
-2. Download/clone this repository and `cd` into it
-3. Install all the dependencies
- ```bash
- npm install
- ```
-4. Install Protractor
- ```bash
-npm install -g protractor
- ```
-5. Start chromedriver.exe.  You can specify --verbose command line argument to get more loggings.
-6. Host protractor/app.json on a web server.  The default is http://localhost:9000/app.json.
+## Help
 
-7. Run the example
- ```bash
- cd test/protractor
- protractor config.js
- ```
+Any advise for common problems or issues.
+```
+command to run if program contains helper info
+```
 
-## Instructions for Selenium Server
-Two example scripts are included in this project to demonstrate use of Selenium Server.
-1. seleniumHub.bat/sh for launching Selenium Grid hub.
-2. seleniumNode.bat for launching Selenium Grid node.
+## Authors
 
-config.js for each test needs to be modified to match IP and port of Selenium hub.
+Contributors names and contact info
 
-## Disclaimers
-* This is a starter example and intended to demonstrate to app providers a sample of how to approach an implementation. 
-* This is an open source project and all are encouraged to contribute.
+## Version History
+
+* 0.2
+    * Various bug fixes and optimizations
+    * See [commit change]() or See [release history]()
+* 0.1
+    * Initial Release
 
 ## License
-MIT
 
-The code in this repository is covered by the included license.
+This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
 
-However, if you run this code, it may call on the OpenFin RVM or OpenFin Runtime, which are covered by OpenFin’s Developer, Community, and Enterprise licenses. You can learn more about OpenFin licensing at the links listed below or just email us at support@openfin.co with questions.
+## Acknowledgments
 
-https://openfin.co/developer-agreement/ <br/>
-https://openfin.co/licensing/
-
-
-## Support
-Please enter an issue in the repo for any questions or problems. 
-<br> Alternatively, please contact us at support@openfin.co
+Inspiration, code snippets, etc.
+* [awesome-readme](https://github.com/matiassingers/awesome-readme)
+* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
+* [dbader](https://github.com/dbader/readme-template)
+* [zenorocha](https://gist.github.com/zenorocha/4526327)
+* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
