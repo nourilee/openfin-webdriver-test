@@ -7,10 +7,10 @@
     "bdd": "./node_modules/.bin/cucumber-js -r test/WebDriverIO/Cucumber/features/step-definitions"
   },
   "dependencies": {
-    "webdriverio": "^4.6.2",
-    "mocha": "^2.0.1",
     "chai": "^1.9.2",
     "chai-as-promised": "^4.1.1",
-    "cucumber": "^7.0.0-rc.0"
+    "cucumber": "^7.0.0-rc.0",
+    "mocha": "^2.0.1",
+    "webdriverio": "^4.6.2"
   }
 }

@@ -1,54 +1,15 @@
-const { Before, Given, When, Then, After } = require('@cucumber/cucumber');
-const windowHandler = require('./../helper/WindowHandler.js');
-const config = require("./../support/config.js");
+'use strict';
 
-var should = require('chai').should(),
-    webdriver = require('webdriverio'),
-    spawn = require('child_process').spawn;
+const { Given, When, Then } = require('@cucumber/cucumber');
+const windowHandler = require('../helper/WindowHandler.js');
 
-var client;
+var client = require('../../Base').client;
 
-
-Before(async function () {
-    if (config.desiredCapabilities.chromeOptions.debuggerAddress) {
-        // if debuggerAddress is set,  ChromeDriver does NOT start "binary" and assumes it is already running,
-        // it needs to start separately
-        spawn(config.desiredCapabilities.chromeOptions.binary, config.desiredCapabilities.chromeOptions.args);
-    }
-
-    // configure webdriver
-    var driverOptions = {
-        desiredCapabilities: config.desiredCapabilities,
-        host: config.remoteDriverHost,
-        port: config.remoteDriverPort,
-        waitforTimeout: config.testTimeout,
-        logLevel: 'verbose'  // http://webdriver.io/guide/getstarted/configuration.html
-    };
-    client = webdriver.remote(driverOptions);
-
-    if (!config.remoteDriverPath) {
-        client.requestHandler.startPath = "";  // webdriverio defaults it to '/wd/hub';
-    }
-
-    client.init().then(function () {
-        client.timeouts("implicit", config.testTimeout).then(function (t) {
-            client.timeouts("script", config.testTimeout).then(function (t2) {
-                client.timeouts("page load", config.testTimeout).then(function (t3) {
-                    done();
-                })
-            });
-        });
-    });
-});
-
-After(async function () {
-    return client.end();
-});
-
+var should = require('chai').should();
 
 Given(/^I'm on (.*) window$/, async (windowTitle) => {
     should.exist(client);
-    await switchWindowByTitle(client, windowTitle, done);
+    await windowHandler.switchWindowByTitle(client, windowTitle);
 });
 
 When(/^I enter (.*) into email input box$/, async (email) => {
@@ -67,12 +28,20 @@ When(/^I enter (.*) into password input box$/, async (password) => {
     });
 });
 
-Then(/^I should switch to the (.*) window$/, async (windowTitle) => {
+When(/^I click (.*) button$/, async (button) => {
     should.exist(client);
-    await switchWindowByTitle(client, windowTitle, done);
+    await client.pause(2000).then(async function () {
+        // pending
+        done();
+    });
 });
 
-Then(/^show connected user$/, async (email) => {
+Then(/^I should switch to the (.*) window$/, async (windowTitle) => {
+    should.exist(client);
+    await windowHandler.switchWindowByTitle(client, windowTitle);
+});
+
+Then(/^show connected user (.*)$/, async (email) => {
     should.exist(client);
     await client.pause(5000).then(async function () {
         await client.element(".Menu__user-section").then(function (result) {
