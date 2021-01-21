@@ -40,4 +40,8 @@ IF "%debuggingPort%" == "0" (
  OpenFinRVM.exe --config=%startupURL% --runtime-arguments="--remote-debugging-port=%debuggingPort%"
 )
 
+Echo Starting
+START /wait /d"C:\Archax\ACE - DEV" ACE.exe
+Echo Done
+
 ENDLOCAL

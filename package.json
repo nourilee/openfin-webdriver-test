@@ -1,19 +1,16 @@
 {
-  "name": "hello-openfin-selenium-example",
+  "name": "openfin-webdriver-test",
   "version": "3.0.1",
   "private": true,
   "scripts": {
     "ace": "mocha test/WebDriverIO/Mocha/ace-client-login.js",
-    "bdd": "./node_modules/.bin/cucumber-js -r test/WebDriverIO/Cucumber/features/step-definitions",
-    "wdio": "wdio wdio.conf.js"
+    "bdd": "./node_modules/.bin/cucumber-js -r test/WebDriverIO/Cucumber/features/step-definitions"
   },
   "dependencies": {
-    "@wdio/cucumber-framework": "^6.11.1",
+    "webdriverio": "^4.6.2",
+    "mocha": "^2.0.1",
     "chai": "^1.9.2",
     "chai-as-promised": "^4.1.1",
-    "cucumber": "^7.0.0-rc.0",
-    "mocha": "^8.2.1",
-    "wdio-chromedriver-service": "^6.0.3",
-    "webdriverio": "^6.0.8"
+    "cucumber": "^7.0.0-rc.0"
   }
 }
